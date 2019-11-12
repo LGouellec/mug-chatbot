@@ -18,23 +18,24 @@ namespace demo.Bot
 {
     public class BotDemo : LuisChatBot
     {
-        public BotDemo(ITranslateHandler translateHandler, IDialogFactory dialogFactory, ILuisRecognizer recognizer, ITextConverter textConverter, BotAccessors accessors, AvionState avionState)
+        public BotDemo(ITranslateHandler translateHandler, IDialogFactory dialogFactory, ILuisRecognizer recognizer, ITextConverter textConverter, BotAccessors accessors)
             : base(translateHandler, null, dialogFactory, recognizer, textConverter)
         {
             Dialogs = dialogFactory.UseDialogAccessor(accessors.DialogStateAccessor)
-                .Create<AvionDialog>(AvionDialog.ID, new object[] { avionState })
+                .Create<AvionDialog>(AvionDialog.ID, new object[] { accessors.AvionStateAccessor })
                 .Create<TextPrompt>("prompt")
                 .Build();
         }
 
         protected override async Task OnTurn(ITurnContext turnContext, CancellationToken cancellationToken)
         {
-            if (turnContext.Activity.Type == ActivityTypes.Message)
-                await turnContext.SendActivityAsync("Coucou !");
+            var dialogContext = await Dialogs.CreateContextAsync(turnContext, cancellationToken);
+            if (turnContext.Activity.Type == ActivityTypes.Message && dialogContext.ActiveDialog == null)
+                await turnContext.SendActivityAsync("Bonjour, je suis votre magnifique chatbot !");
         }
 
-        [LuisIntent("Hello")]
-        public async Task HelloItent(DialogContext context, RecognizerResult result, CancellationToken token)
+        [LuisIntent("PlaneBook")]
+        public async Task PlaneBookIntent(DialogContext context, RecognizerResult result, CancellationToken token)
         {
             await context.BeginDialogAsync(AvionDialog.ID, result, token);
         }

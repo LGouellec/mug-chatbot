@@ -1,4 +1,7 @@
-﻿using demo.State;
+﻿using Bot.Builder.Community.Dialogs.FormFlow;
+using bot_framework_extensions.Extension;
+using demo.State;
+using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using System;
 using System.Collections.Generic;
@@ -8,10 +11,7 @@ namespace demo.Dialogs
 {
     public class AvionDialog : WaterfallDialog
     {
-        //var conversationStateAccessors = _conversationState.CreateProperty<AvionState>(nameof(ConversationData));
-        //var conversationData = await conversationStateAccessors.GetAsync(turnContext, () => new ConversationData());
-
-        public AvionDialog(string dialogId, AvionState state, IEnumerable<WaterfallStep> steps = null) 
+        public AvionDialog(string dialogId, IStatePropertyAccessor<AvionState> stateProperty, IEnumerable<WaterfallStep> steps = null) 
             : base(dialogId, steps)
         {
             AddStep(async (c, t) =>
@@ -23,7 +23,8 @@ namespace demo.Dialogs
             })
             .AddStep(async (c, t) =>
             {
-                jour = c.Result.ToString();
+                AvionState state = await stateProperty.GetAsync(c.Context, () => new AvionState(), t);
+                state.Jour = c.Result.ToString();
                 return await c.PromptAsync("prompt", new PromptOptions
                 {
                     Prompt = c.Context.Activity.CreateReply("Quel destination ? ")
@@ -31,12 +32,22 @@ namespace demo.Dialogs
             })
             .AddStep(async (c, t) =>
             {
-                destination = c.Result.ToString();
+                AvionState state = await stateProperty.GetAsync(c.Context, () => new AvionState(), t);
+                state.Destination = c.Result.ToString();
                 return await c.PromptAsync("prompt", new PromptOptions
                 {
-                    Prompt = c.Context.Activity.CreateReply($"Vous voulez partir le {jour} à {destination} ")
+                    Prompt = c.Context.Activity.CreateReply($"Vous voulez partir le {state.Jour} à {state.Destination} ")
                 });
             });
+
+            //AddStep(async (c, t) =>
+            //{
+            //    AvionFormBuilder builder = new AvionFormBuilder();
+            //    var form = builder.Build(c.Context, t);
+            //    var dialog = FormDialog.FromForm(() => form, FormOptions.PromptInStart);
+
+            //    return await c.Call(dialog, c.Options as RecognizerResult);
+            //});
         }
 
         public static string ID => typeof(AvionDialog).Name;

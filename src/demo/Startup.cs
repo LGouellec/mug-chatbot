@@ -34,12 +34,12 @@ namespace demo
 
                 var accessors = new BotAccessors(conversationState)
                 {
-                    DialogStateAccessor = conversationState.CreateProperty<DialogState>(BotAccessors.DialogStateAccessorName)
+                    DialogStateAccessor = conversationState.CreateProperty<DialogState>(BotAccessors.DialogStateAccessorName),
+                    AvionStateAccessor = conversationState.CreateProperty<AvionState>(BotAccessors.AvionStateAccessorName)
                 };
 
                 return accessors;
             });
-            services.AddSingleton(new AvionState());
 
             services.AddChatBot<BotDemo>(Configuration);
         }
