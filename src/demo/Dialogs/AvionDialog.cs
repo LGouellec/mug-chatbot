@@ -14,40 +14,47 @@ namespace demo.Dialogs
         public AvionDialog(string dialogId, IStatePropertyAccessor<AvionState> stateProperty, IEnumerable<WaterfallStep> steps = null) 
             : base(dialogId, steps)
         {
-            AddStep(async (c, t) =>
-            {
-                return await c.PromptAsync("prompt", new PromptOptions
-                {
-                    Prompt = c.Context.Activity.CreateReply("A quel jour voulez-vous partir ? ")
-                });
-            })
-            .AddStep(async (c, t) =>
-            {
-                AvionState state = await stateProperty.GetAsync(c.Context, () => new AvionState(), t);
-                state.Jour = c.Result.ToString();
-                return await c.PromptAsync("prompt", new PromptOptions
-                {
-                    Prompt = c.Context.Activity.CreateReply("Quel destination ? ")
-                });
-            })
-            .AddStep(async (c, t) =>
-            {
-                AvionState state = await stateProperty.GetAsync(c.Context, () => new AvionState(), t);
-                state.Destination = c.Result.ToString();
-                return await c.PromptAsync("prompt", new PromptOptions
-                {
-                    Prompt = c.Context.Activity.CreateReply($"Vous voulez partir le {state.Jour} à {state.Destination} ")
-                });
-            });
-
             //AddStep(async (c, t) =>
             //{
-            //    AvionFormBuilder builder = new AvionFormBuilder();
-            //    var form = builder.Build(c.Context, t);
-            //    var dialog = FormDialog.FromForm(() => form, FormOptions.PromptInStart);
-
-            //    return await c.Call(dialog, c.Options as RecognizerResult);
+            //    return await c.PromptAsync("prompt", new PromptOptions
+            //    {
+            //        Prompt = c.Context.Activity.CreateReply("A quel jour voulez-vous partir ? ")
+            //    });
+            //})
+            //.AddStep(async (c, t) =>
+            //{
+            //    AvionState state = await stateProperty.GetAsync(c.Context, () => new AvionState(), t);
+            //    state.Day = c.Result.ToString();
+            //    return await c.PromptAsync("prompt", new PromptOptions
+            //    {
+            //        Prompt = c.Context.Activity.CreateReply("Quel destination ? ")
+            //    });
+            //})
+            //.AddStep(async (c, t) =>
+            //{
+            //    AvionState state = await stateProperty.GetAsync(c.Context, () => new AvionState(), t);
+            //    state.Destination = c.Result.ToString();
+            //    return await c.PromptAsync("prompt", new PromptOptions
+            //    {
+            //        Prompt = c.Context.Activity.CreateReply($"Vous voulez partir le {state.Day} à {state.Destination} ")
+            //    });
             //});
+
+            AddStep(async (c, t) =>
+            {
+                AvionFormBuilder builder = new AvionFormBuilder();
+                var form = builder.Build(c.Context, t);
+                var dialog = FormDialog.FromForm(() => form, FormOptions.PromptInStart);
+
+                return await c.Call(dialog, c.Options as RecognizerResult);
+            })
+            .AddStep(async (c, t) =>
+            {
+                return await c.PromptAsync("prompt", new PromptOptions
+                {
+                    Prompt = c.Context.Activity.CreateReply("Thanks you ! Bye !")
+                });
+            });
         }
 
         public static string ID => typeof(AvionDialog).Name;
