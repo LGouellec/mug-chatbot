@@ -1,0 +1,20 @@
+{
+    "_type": "SpellCheck",
+    "flaggedTokens": [
+        {
+            "offset": 0,
+            "token": "Helo",
+            "type": "UnknownToken",
+            "suggestions": [
+                {
+                    "suggestion": "Hello",
+                    "score": 0.867006187551021
+                },
+                {
+                    "suggestion": "Help",
+                    "score": 0.8065042044862158
+                }
+            ]
+        }
+    ]
+}

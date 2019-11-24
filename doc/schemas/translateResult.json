@@ -1,0 +1,14 @@
+[
+    {
+        "detectedLanguage": {
+            "language": "fr",
+            "score": 1.0
+        },
+        "translations": [
+            {
+                "text": "Hello how are you?",
+                "to": "en"
+            }
+        ]
+    }
+]
