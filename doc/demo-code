@@ -1,4 +1,5 @@
 // Connect LUIS.ai avec compte CGI
+// ouvrir un cmder sur le dossier demo2
 
 dotnet new webapi
 dotnet add package bot-framework-extensions
