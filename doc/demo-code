@@ -1,0 +1,166 @@
+// Connect LUIS.ai avec compte CGI
+
+dotnet new webapi
+dotnet add package bot-framework-extensions
+
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Debug",
+      "System": "Information",
+      "Microsoft": "Information"
+    }
+  },
+    "spell": {
+    "host": "https://api.cognitive.microsoft.com",
+    "path": "/bing/v7.0/spellcheck?",
+    "params": "mkt=en-US&mode=proof",
+    "key": "97a642322fd34542940b1ff15da11006"
+  },
+  "translate": {
+    "endpoint": "https://api.cognitive.microsofttranslator.com",
+    "key": "e0612a92027a4629a57a1c51a7d1c8c1"
+  },
+  "luis": {
+    "applicationId": "c8e64d7c-12e8-4b37-930e-771a574a3c23",
+    "endpointKey": "76f45f8f695a43b0ba4f08a0ac0b88c0",
+    "endpoint": "https://westus.api.cognitive.microsoft.com/"
+  }
+}
+--------------------------------------------------------------
+FIRST IMPLEMENTATON
+--------------------------------------------------------------
+Créer BotDemo : IBot
+service.AddBot<BotDemo>();
+app.UseBotFramework();
+
+--------------------------------------------------------------
+Utilisation des extensions
+--------------------------------------------------------------
+
+BotDemo hérite de BotBase
+
+public BotDemo(ITranslateHandler translateHandler, IDialogFactory dialogFactory):
+    base(translateHandler, null, dialogFactory)
+{
+
+}
+
+services.AddChatBot<BotDemo>(Configuration, (a) =>
+{
+    a.EnableDetectionUserLanguage = true;
+});
+
+--------------------------------------------------------------
+Utilisation du LuisChatBot
+--------------------------------------------------------------
+
+public class BotDemo : LuisChatBot
+
+protected override async Task OnTurn(ITurnContext turnContext, CancellationToken cancellationToken)
+{
+    await turnContext.SendActivityAsync("Hello ! What can I do for you ? ");
+}
+
+public BotDemo(ITranslateHandler translateHandler, IDialogFactory dialogFactory, ILuisRecognizer recognizer, ITextConverter textConverter):
+    base(translateHandler, null, dialogFactory, recognizer, textConverter)
+{
+
+}
+
+[LuisIntent("PlaneBook")]
+public async Task PlaneBook(DialogContext context, RecognizerResult result, CancellationToken token)
+{
+
+}
+
+public class PlaneBookDialog : WaterfallDialog
+
+
+AddStep(async (c, t) =>
+{
+    return await c.PromptAsync("prompt", new PromptOptions
+    {
+        Prompt = c.Context.Activity.CreateReply("")
+    });
+})
+
+public class BotAccessors
+{
+    public BotAccessors(ConversationState conversationState)
+    {
+        ConversationState = conversationState ?? throw new ArgumentNullException(nameof(conversationState));
+    }
+    public static string DialogStateAccessorName { get; } = $"{nameof(BotAccessors)}.DialogState";
+    public IStatePropertyAccessor<DialogState> DialogStateAccessor { get; set; }
+    public ConversationState ConversationState { get; }
+}
+
+services.AddSingleton(serviceProvider => {
+    BotFrameworkOptions options = serviceProvider.GetRequiredService<IOptions<BotFrameworkOptions>>().Value;
+    var conversationState = options.State.OfType<ConversationState>().FirstOrDefault();
+    var accessors = new BotAccessors(conversationState)
+    {
+        DialogStateAccessor = conversationState.CreateProperty<DialogState>(BotAccessors.DialogStateAccessorName)
+    };
+    return accessors;
+});
+
+Ajouter BotAccessors botAccessors dans le constructeur du Bot
+
+Dialogs = dialogFactory.UseDialogAccessor(botAccessors.DialogStateAccessor)
+    .Create<PlaneBookDialog>()
+    .Create<TextPrompt>("prompt")
+    .Build();
+
+Faire un test avec une implémentation sans état functionnel
+
+--------------------------------------------------------------
+Rajouter l'état du dialog
+--------------------------------------------------------------
+
+public class PlaneBookState
+{
+    public string City { get; set; }
+    public string Date { get; set; }
+}
+
+Dans le bot accessors :
+
+        public static string PlaneBookStateAccessorName { get; } = $"{nameof(BotAccessors)}.PlaneBookState";
+        public IStatePropertyAccessor<PlaneBookState> PlaneBookStateAccessor { get; set; }
+    
+Dans le startup :
+
+PlaneBookStateAccessor = conversationState.CreateProperty<PlaneBookState>(BotAccessors.PlaneBookStateAccessorName),
+
+Dialogs = dialogFactory.UseDialogAccessor(botAccessors.DialogStateAccessor)
+    .Create<PlaneBookDialog>("PlaneBookDialog", botAccessors.PlaneBookStateAccessor)
+    .Create<TextPrompt>("prompt")
+    .Build();
+
+rajouter dans le constructeur IStatePropertyAccessor<PlaneBookState>  state
+
+PlaneBookState s = await state.GetAsync(c.Context, () => new PlaneBookState());
+
+-------------------------------------
+FORM FLOW
+-------------------------------------
+
+    public class PlaneBookQuery
+    {
+        [Prompt("Quel destination ?")]
+        public string City { get; set; }
+        [Prompt("A quel date ?")]
+        public string Day { get; set; }
+    }
+
+public static class PlaneBookBuilder
+{
+    public static IForm<PlaneBookQuery> Build(ITurnContext context)
+    {
+        var form = new FormBuilder<PlaneBookQuery>()
+    
+        return form.Build();
+    }
+}
