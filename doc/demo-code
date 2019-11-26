@@ -29,6 +29,7 @@ dotnet add package bot-framework-extensions
     "endpoint": "https://westus.api.cognitive.microsoft.com/"
   }
 }
+
 --------------------------------------------------------------
 FIRST IMPLEMENTATON
 --------------------------------------------------------------
@@ -166,3 +167,8 @@ public static class PlaneBookBuilder
         return form.Build();
     }
 }
+
+
+var dialog = FormDialog.FromForm(() => form, FormOptions.PromptInStart);
+
+return await c.Call(dialog, c.Options as RecognizerResult);
