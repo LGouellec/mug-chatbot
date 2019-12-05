@@ -1,0 +1,511 @@
+{
+    "recognitionUnits": [
+        {
+            "alternates": [
+                {
+                    "category": "inkWord",
+                    "recognizedString": "je"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "Jœ"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "Jõ"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "Jö"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "Jé"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "Jø"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "Jè"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "Jä"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "JØ"
+                }
+            ],
+            "boundingRectangle": {
+                "height": 64.010002136230469,
+                "topX": 56.799999237060547,
+                "topY": 50.400001525878906,
+                "width": 108.01000213623047
+            },
+            "category": "inkWord",
+            "class": "leaf",
+            "id": 4,
+            "parentId": 3,
+            "recognizedText": "Je",
+            "rotatedBoundingRectangle": [
+                {
+                    "x": 56.810001373291016,
+                    "y": 50.159999847412109
+                },
+                {
+                    "x": 164.99000549316406,
+                    "y": 50.529998779296875
+                },
+                {
+                    "x": 164.77999877929688,
+                    "y": 114.63999938964844
+                },
+                {
+                    "x": 56.599998474121094,
+                    "y": 114.27999877929688
+                }
+            ],
+            "strokeIds": [
+                1,
+                2,
+                3
+            ]
+        },
+        {
+            "alternates": [
+                {
+                    "category": "inkWord",
+                    "recognizedString": "SUIS"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "Suis"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "sois"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "Svis"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "SUi5"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "SUiS"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "SUI.S"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "SUI.5"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "scis"
+                }
+            ],
+            "boundingRectangle": {
+                "height": 58.409999847412109,
+                "topX": 235.19999694824219,
+                "topY": 66.400001525878906,
+                "width": 105.61000061035156
+            },
+            "category": "inkWord",
+            "class": "leaf",
+            "id": 5,
+            "parentId": 3,
+            "recognizedText": "suis",
+            "rotatedBoundingRectangle": [
+                {
+                    "x": 241.24000549316406,
+                    "y": 58.360000610351563
+                },
+                {
+                    "x": 346.6300048828125,
+                    "y": 70.599998474121094
+                },
+                {
+                    "x": 340.1400146484375,
+                    "y": 126.38999938964844
+                },
+                {
+                    "x": 234.75999450683594,
+                    "y": 114.15000152587891
+                }
+            ],
+            "strokeIds": [
+                6,
+                7,
+                8,
+                4,
+                5
+            ]
+        },
+        {
+            "alternates": [
+                {
+                    "category": "inkWord",
+                    "recognizedString": "tors"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "torr"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "Ton"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "tor"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "tar"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "torrs"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "Tors"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "tour"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "Torr"
+                }
+            ],
+            "boundingRectangle": {
+                "height": 42.409999847412109,
+                "topX": 398.39999389648438,
+                "topY": 70.400001525878906,
+                "width": 96.010002136230469
+            },
+            "category": "inkWord",
+            "class": "leaf",
+            "id": 6,
+            "parentId": 3,
+            "recognizedText": "ton",
+            "rotatedBoundingRectangle": [
+                {
+                    "x": 400.70001220703125,
+                    "y": 69.800003051757813
+                },
+                {
+                    "x": 497.32000732421875,
+                    "y": 79.849998474121094
+                },
+                {
+                    "x": 493.07998657226563,
+                    "y": 120.63999938964844
+                },
+                {
+                    "x": 396.45999145507813,
+                    "y": 110.59999847412109
+                }
+            ],
+            "strokeIds": [
+                10,
+                9,
+                11,
+                12
+            ]
+        },
+        {
+            "alternates": [
+                {
+                    "category": "inkWord",
+                    "recognizedString": "pére"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "pere"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "pète"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "perre"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "péFe"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "pèFe"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "péte"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "pete"
+                },
+                {
+                    "category": "inkWord",
+                    "recognizedString": "pève"
+                }
+            ],
+            "boundingRectangle": {
+                "height": 96.80999755859375,
+                "topX": 583.20001220703125,
+                "topY": 48.799999237060547,
+                "width": 116.80999755859375
+            },
+            "category": "inkWord",
+            "class": "leaf",
+            "id": 7,
+            "parentId": 3,
+            "recognizedText": "père",
+            "rotatedBoundingRectangle": [
+                {
+                    "x": 579.97998046875,
+                    "y": 51.569999694824219
+                },
+                {
+                    "x": 694.90997314453125,
+                    "y": 43.090000152587891
+                },
+                {
+                    "x": 701.8900146484375,
+                    "y": 137.66000366210938
+                },
+                {
+                    "x": 586.95001220703125,
+                    "y": 146.13999938964844
+                }
+            ],
+            "strokeIds": [
+                14,
+                13,
+                16,
+                15,
+                17,
+                18,
+                19
+            ]
+        },
+        {
+            "alternates": [
+                {
+                    "category": "line",
+                    "recognizedString": "je suis ton père"
+                },
+                {
+                    "category": "line",
+                    "recognizedString": "Je SUIS ton père"
+                },
+                {
+                    "category": "line",
+                    "recognizedString": "Je suis tors père"
+                },
+                {
+                    "category": "line",
+                    "recognizedString": "Je suis ton pére"
+                },
+                {
+                    "category": "line",
+                    "recognizedString": "Jœ suis ton père"
+                },
+                {
+                    "category": "line",
+                    "recognizedString": "je SUIS ton père"
+                },
+                {
+                    "category": "line",
+                    "recognizedString": "je suis tors père"
+                },
+                {
+                    "category": "line",
+                    "recognizedString": "je suis ton pére"
+                },
+                {
+                    "category": "line",
+                    "recognizedString": "Jõ suis ton père"
+                }
+            ],
+            "boundingRectangle": {
+                "height": 96.80999755859375,
+                "topX": 56.799999237060547,
+                "topY": 48.799999237060547,
+                "width": 643.21002197265625
+            },
+            "category": "line",
+            "childIds": [
+                4,
+                5,
+                6,
+                7
+            ],
+            "class": "container",
+            "id": 3,
+            "parentId": 2,
+            "recognizedText": "Je suis ton père",
+            "rotatedBoundingRectangle": [
+                {
+                    "x": 56.830001831054688,
+                    "y": 46.889999389648438
+                },
+                {
+                    "x": 700.21002197265625,
+                    "y": 49.069999694824219
+                },
+                {
+                    "x": 699.8800048828125,
+                    "y": 145.94999694824219
+                },
+                {
+                    "x": 56.5,
+                    "y": 143.77000427246094
+                }
+            ],
+            "strokeIds": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                4,
+                5,
+                10,
+                9,
+                11,
+                12,
+                14,
+                13,
+                16,
+                15,
+                17,
+                18,
+                19
+            ]
+        },
+        {
+            "boundingRectangle": {
+                "height": 96.80999755859375,
+                "topX": 56.799999237060547,
+                "topY": 48.799999237060547,
+                "width": 643.21002197265625
+            },
+            "category": "paragraph",
+            "childIds": [
+                3
+            ],
+            "class": "container",
+            "id": 2,
+            "parentId": 1,
+            "rotatedBoundingRectangle": [
+                {
+                    "x": 56.830001831054688,
+                    "y": 46.889999389648438
+                },
+                {
+                    "x": 700.21002197265625,
+                    "y": 49.069999694824219
+                },
+                {
+                    "x": 699.8800048828125,
+                    "y": 145.94999694824219
+                },
+                {
+                    "x": 56.5,
+                    "y": 143.77000427246094
+                }
+            ],
+            "strokeIds": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                4,
+                5,
+                10,
+                9,
+                11,
+                12,
+                14,
+                13,
+                16,
+                15,
+                17,
+                18,
+                19
+            ]
+        },
+        {
+            "boundingRectangle": {
+                "height": 96.80999755859375,
+                "topX": 56.799999237060547,
+                "topY": 48.799999237060547,
+                "width": 643.21002197265625
+            },
+            "category": "writingRegion",
+            "childIds": [
+                2
+            ],
+            "class": "container",
+            "id": 1,
+            "parentId": 0,
+            "rotatedBoundingRectangle": [
+                {
+                    "x": 56.830001831054688,
+                    "y": 46.889999389648438
+                },
+                {
+                    "x": 700.21002197265625,
+                    "y": 49.069999694824219
+                },
+                {
+                    "x": 699.8800048828125,
+                    "y": 145.94999694824219
+                },
+                {
+                    "x": 56.5,
+                    "y": 143.77000427246094
+                }
+            ],
+            "strokeIds": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                4,
+                5,
+                10,
+                9,
+                11,
+                12,
+                14,
+                13,
+                16,
+                15,
+                17,
+                18,
+                19
+            ]
+        }
+    ]
+}
