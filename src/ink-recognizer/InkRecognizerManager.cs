@@ -47,6 +47,7 @@ namespace ink_recognizer
         {
             RestClient client = new RestClient(endpoint);
             RestRequest restRequest = new RestRequest(inkRecognitionUrl, Method.PUT);
+            restRequest.Timeout = (int)TimeSpan.FromMilliseconds(1000 * 10).TotalMilliseconds;
             restRequest.AddHeader("Content-Type", "application/json");
             restRequest.AddHeader("Ocp-Apim-Subscription-Key", apiKey);
             restRequest.AddJsonBody(request);
@@ -54,6 +55,8 @@ namespace ink_recognizer
             var response = client.Execute(restRequest);
             if (response.StatusCode == HttpStatusCode.OK)
                 return AnalyseResult(JsonConvert.DeserializeObject<RootObject>(response.Content));
+            else if (response.StatusCode == 0)
+                return "Error timeout";
             else
                 return $"Error : {response.StatusCode} - {response.Content}";
         }
